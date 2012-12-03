@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textSize="1sp" >
+
+        <requestFocus />
+    </TextView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_send" />
+
+    <EditText
+        android:id="@+id/edit_host"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_host"
+        android:imeOptions="flagNoFullscreen"
+        android:inputType="textUri" />
+
+    <EditText
+        android:id="@+id/edit_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_id"
+        android:imeOptions="flagNoFullscreen"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/edit_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_pass"
+        android:imeOptions="flagNoFullscreen"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/edit_dst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_dst"
+        android:imeOptions="flagNoFullscreen"
+        android:inputType="textEmailAddress" />
+    
+    <EditText
+        android:id="@+id/edit_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_body"
+        android:imeOptions="flagNoFullscreen"
+        android:inputType="textShortMessage" />
+
+    <EditText
+        android:id="@+id/edit_cs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_cs"
+        android:imeOptions="flagNoFullscreen"
+        android:inputType="textShortMessage"/>
+
+</LinearLayout>

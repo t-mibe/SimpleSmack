@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SimpleSmackSample</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="button_send">Send Message</string>
+    <string name="hint_host">HOST</string>
+    <string name="hint_id">ID</string>
+    <string name="hint_pass">PASS</string>
+    <string name="hint_dst">Destination</string>
+    <string name="hint_body">BODY</string>
+    <string name="hint_cs">Custom Stanza</string>
+    
+
+</resources>
