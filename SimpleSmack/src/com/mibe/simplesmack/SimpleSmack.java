@@ -22,7 +22,7 @@ import android.widget.Toast;
 public class SimpleSmack extends Activity {
 
 	private static final String TAG = "SimpleSmack";
-	
+
 	private static final int duration = Toast.LENGTH_SHORT;
 
 	private static final String DEFAULT_HOST	= "tyurai.com";
@@ -30,7 +30,7 @@ public class SimpleSmack extends Activity {
 	private static final String DEFAULT_PASS	= "hoge";
 	private static final String DEFAULT_DST		= "mibe2@tyurai.com";
 	private static final String DEFAULT_BODY	= "body";
-	
+
 
 	private String host, myId, pass, dst, body, cStanza;
 	private boolean mode;
@@ -45,16 +45,16 @@ public class SimpleSmack extends Activity {
 		if(bundle != null){
 
 			Log.d(TAG, "getOption");
-			
+
 			if((host	= bundle.getString("HOST"	)) == null)host	= DEFAULT_HOST;
 			if((myId	= bundle.getString("ID"		)) == null)myId	= DEFAULT_ID;
 			if((pass	= bundle.getString("PASS"	)) == null)pass	= DEFAULT_PASS;
 			if((dst		= bundle.getString("DST"	)) == null)dst	= DEFAULT_DST;
 			if((body	= bundle.getString("BODY"	)) == null)body	= DEFAULT_BODY;
 			if((cStanza	= bundle.getString("CS"		)) == null)cStanza = null;
-			
+
 			mode = bundle.getBoolean("MODE");
-			
+
 		} else {
 			Toast.makeText(this, "オプションを指定してください", duration).show();
 			finish();
@@ -98,31 +98,30 @@ public class SimpleSmack extends Activity {
 				try {
 					CustomMessage msg = new CustomMessage();
 					msg.setBody(body);
-					
+
 					if(mode){
 						// カスタムスタンザ文記述モード
 						msg.setCostomStanzaText(cStanza);
-						
 					} else {
-						
-					}
-					
-					if(cStanza != null && !cStanza.equals("")){
-						
-						String csArray[] = cStanza.split(",");
-						
-						int len = csArray.length;
-						for(int i = 0;i < len; i++){
-							Log.d(TAG, "new stanza");
-							String cs[] = csArray[i].split(":");
-							msg.addStanza(cs[0], cs[1]);
+						// 簡易記述モード
+						if(cStanza != null && !cStanza.equals("")){
+
+							String csArray[] = cStanza.split(",");
+
+							int len = csArray.length;
+							for(int i = 0;i < len; i++){
+								Log.d(TAG, "new stanza");
+								String cs[] = csArray[i].split(":");
+								msg.addStanza(cs[0], cs[1]);
+							}
 						}
 					}
+
 					newChat.sendMessage(msg);
 				} catch (XMPPException e) {
 					Log.v(TAG, "couldn't send:" + e.toString());
 				}
-				
+
 				finish();
 			}
 		}).start();
