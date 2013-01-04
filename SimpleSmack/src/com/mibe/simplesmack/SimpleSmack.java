@@ -12,6 +12,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+/**
+ * adb am start -n com.mibe.simplesmack/.SimpleSmack
+ * --es HOST tyurai.com --es ID mibe@tyurai.com --es PASS hoge
+ * --es DST mibe2@tyurai.com --es BODY test --es CS w:85,h:180
+ * @author mibe
+ *
+ */
 public class SimpleSmack extends Activity {
 
 	private static final String TAG = "SimpleSmack";
@@ -25,7 +32,8 @@ public class SimpleSmack extends Activity {
 	private static final String DEFAULT_BODY	= "body";
 	
 
-	private String host, myId, pass, dst, body, cStanza;;
+	private String host, myId, pass, dst, body, cStanza;
+	private boolean mode;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -44,6 +52,8 @@ public class SimpleSmack extends Activity {
 			if((dst		= bundle.getString("DST"	)) == null)dst	= DEFAULT_DST;
 			if((body	= bundle.getString("BODY"	)) == null)body	= DEFAULT_BODY;
 			if((cStanza	= bundle.getString("CS"		)) == null)cStanza = null;
+			
+			mode = bundle.getBoolean("MODE");
 			
 		} else {
 			Toast.makeText(this, "オプションを指定してください", duration).show();
@@ -88,6 +98,14 @@ public class SimpleSmack extends Activity {
 				try {
 					CustomMessage msg = new CustomMessage();
 					msg.setBody(body);
+					
+					if(mode){
+						// カスタムスタンザ文記述モード
+						msg.setCostomStanzaText(cStanza);
+						
+					} else {
+						
+					}
 					
 					if(cStanza != null && !cStanza.equals("")){
 						

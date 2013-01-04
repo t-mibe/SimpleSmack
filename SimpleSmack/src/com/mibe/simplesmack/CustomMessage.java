@@ -7,13 +7,22 @@ public class CustomMessage extends org.jivesoftware.smack.packet.Message {
 	
 	List<CustomStanza> csList = new ArrayList<CustomStanza>();
 	
+	String csText = null;
+	
 	public CustomMessage() {
 		super();
 	}
 	
+	// カスタムスタンザを追加する
 	public void addStanza(String tagName, String text){
 		
 		csList.add(new CustomStanza(tagName, text));
+	}
+	
+	// カスタムスタンザを定義するXML文を設定する
+	public void setCostomStanzaText(String cStanza) {
+		
+		csText = cStanza;
 	}
 
 	@Override
@@ -24,6 +33,10 @@ public class CustomMessage extends org.jivesoftware.smack.packet.Message {
 
 		XMLMessage1 = XMLMessage1.concat(">");
 		XMLMessage2 = XMLMessage2.substring(1);
+		
+		if(csText != null){
+			return XMLMessage1.concat(csText).concat(XMLMessage2); 
+		}
 		
 		String customText = "";
 		int len = csList.size();
